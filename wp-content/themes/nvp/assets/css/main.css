@@ -582,3 +582,10 @@ ul#shipping_method label{display:inline;font-weight:600}
 .partner__logo img,.logo-wall a img{position:absolute;inset:14px;width:calc(100% - 28px);height:calc(100% - 28px);max-width:none;max-height:none;object-fit:contain}
 .logo-wall a{display:block;height:110px;padding:0}
 .logo-wall a img{inset:20px;width:calc(100% - 40px);height:calc(100% - 40px)}
+
+/* Logo (původní vzhled jako vektor) */
+.nvp-logo{--lv:#0b4bff;--la:#02060f;--lb:#0053b8;height:54px;width:auto;color:#0b1020}
+.nvp-logo .lg-v{stroke:var(--lv)}
+.nvp-logo .lg-a{stop-color:var(--la)}.nvp-logo .lg-b{stop-color:var(--lb)}
+.nvp-logo.on-dark{--lv:#5b86ff;--la:#e8edff;--lb:#3a6bff;color:#fff}
+.site-footer .nvp-logo{height:56px}
