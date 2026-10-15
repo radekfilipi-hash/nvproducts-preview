@@ -127,18 +127,6 @@ body.cart-open .drawer{transform:none}
 .hero__facts strong{display:block;color:#fff;font-size:1.7rem;font-weight:800;letter-spacing:-.03em;line-height:1.1}
 .hero__stage{position:relative;aspect-ratio:1/1;max-width:560px;width:100%;margin-inline:auto}
 .orb{position:absolute;inset:8%;border-radius:50%;background:radial-gradient(circle at 35% 30%,rgba(125,149,255,.5),rgba(36,71,255,.12) 55%,transparent 70%);filter:blur(2px);border:1px solid rgba(255,255,255,.1)}
-.frame{position:absolute;margin:0;overflow:hidden;border-radius:22px;border:6px solid rgba(255,255,255,.95);background:#cfd2da;box-shadow:0 30px 60px rgba(0,0,0,.5);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
-.frame img{width:100%;height:100%;object-fit:cover}
-.frame--c{width:62%;aspect-ratio:4/3;left:0;top:4%;transform:rotate(-7deg)}
-.frame--a{width:68%;aspect-ratio:1/1;right:0;top:18%;transform:rotate(4deg)}
-.frame--a img{transform:scale(1.3)}
-.frame--b{width:46%;aspect-ratio:1/1;left:8%;bottom:2%;transform:rotate(-3deg)}
-.frame--b img{transform:scale(1.25)}
-.hero__stage:hover .frame--a{transform:rotate(2deg) translateY(-8px)}
-.hero__stage:hover .frame--c{transform:rotate(-9deg) translateX(-6px)}
-.hero__stage:hover .frame--b{transform:rotate(-1deg) translateY(6px)}
-.float-chip{position:absolute;right:6%;bottom:6%;display:inline-flex;gap:.5em;align-items:center;padding:.7em 1.1em;border-radius:99px;background:var(--gold);color:var(--ink);font-weight:800;font-size:.9rem;box-shadow:0 12px 30px rgba(0,0,0,.35)}
-.float-chip .nvp-ico{width:18px;height:18px}
 
 /* ---------- USP ---------- */
 .usps{background:#fff;border-bottom:1px solid var(--line)}
@@ -598,3 +586,8 @@ ul#shipping_method label{display:inline;font-weight:600}
 .hero__stage:hover .holder--c{transform:translateY(-8px)}
 .hero__stage:hover .holder--l{transform:rotate(-11deg) translateX(-6px)}
 .hero__stage:hover .holder--r{transform:rotate(10deg) translateX(6px)}
+
+/* Konfigurátor – mnoho slotů se vejde i na úzký displej */
+.stack__body{gap:4px}
+.stack .slot{min-width:8px}
+.stack .slot span{font-size:.68rem}
