@@ -99,7 +99,7 @@ var woocommerce_params = {"ajax_url":"/nvproducts/wp-admin/admin-ajax.php","wc_a
 <p> </p>
 <p>Pro poskytování prodeje zboží a provoz našich webových stránek zpracováváme některé osobní údaje.</p>
 <p> </p>
-<p>Zpracování osobních údajů upravuje zejména nařízení Evropského parlamentu a Rady (EU) 2016/679 ze dne 27. dubna 2016 o ochraně fyzických sobo v souvislosti se zpracováním osobních údajů a o volném pohybu těchto údajů a o zrušení směrnice 95/46/ES (obecné nařízení o ochraně osobních údajů) („GDPR“)</p>
+<p>Zpracování osobních údajů upravuje zejména nařízení Evropského parlamentu a Rady (EU) 2016/679 ze dne 27. dubna 2016 o ochraně fyzických osob v souvislosti se zpracováním osobních údajů a o volném pohybu těchto údajů a o zrušení směrnice 95/46/ES (obecné nařízení o ochraně osobních údajů) („GDPR“)</p>
 <p> </p>
 <p>I. Zpracování osobních údajů</p>
 <p> </p>
@@ -142,11 +142,11 @@ var woocommerce_params = {"ajax_url":"/nvproducts/wp-admin/admin-ajax.php","wc_a
 <p>Umožňuje nám to ust. § 7 odst. 3 zákona č. 480/2004 Sb., o některých službách informační společnosti, pokud jste nám to při nákupu nezakázali.</p>
 <p> </p>
 <p>                Jak dlouho budeme osobní údaje zpracovávat?</p>
-<p>5 let od vašeho posledního nákupu. Z rozesílky se můžete kdykoliv odhlásit prostřednictvím e-mailu nebo nás kontaktujte na e-mailu: eshop@nvproducts.cz</p>
+<p>5 let od vašeho posledního nákupu. Z rozesílky se můžete kdykoliv odhlásit prostřednictvím e-mailu nebo nás kontaktujte na e-mailu: info@nvproducts.cz</p>
 <p> </p>
 <p>II. Kdo se k datům dostane?</p>
 <p> </p>
-<p>Vaše data zůstanou u nás.</p>
+<p>Vaše údaje předáváme jen těm, kdo nám pomáhají splnit objednávku: dopravcům (Česká pošta, Zásilkovna), poskytovateli platební brány (Stripe) a poskytovateli webového hostingu. Údaje pro účetní a daňové účely máme povinnost uchovávat podle zákona.</p>
 <p> </p>
 <p>Osobní údaje zpracováváme pouze na území Evropské unie.</p>
 <p>III. Co byste dál měli vědět</p>
@@ -155,7 +155,7 @@ var woocommerce_params = {"ajax_url":"/nvproducts/wp-admin/admin-ajax.php","wc_a
 <p> </p>
 <p>V naší společnosti nedochází k rozhodování na základě automatického zpracování či profilování.</p>
 <p> </p>
-<p>Pokud byste měli k osobním údajům otázky, kontaktujte nás na e-mailové adrese nvprodcuts.cz nebo zavolejte na tel. č. 793 988 319</p>
+<p>Pokud byste měli k osobním údajům otázky, kontaktujte nás na e-mailové adrese <a href="mailto:info@nvproducts.cz">info@nvproducts.cz</a> nebo zavolejte na tel. č. +420 739 988 319</p>
 <p>IV. Používání souborů cookies</p>
 <p> </p>
 <p>Cookies jsou textové soubory obsahující malé množství informací, které se při návštěvě našich webových stránek stahují do Vašeho zařízení. Soubory cookies se následně při každé další návštěvě odesílají zpět na webovou stránku nebo jinou webovou stránku, která je rozpozná. </p>
@@ -190,47 +190,59 @@ var woocommerce_params = {"ajax_url":"/nvproducts/wp-admin/admin-ajax.php","wc_a
 </tr>
 <tr>
 <td>
-<p>Google analytics</p>
+<p>WooCommerce (woocommerce_cart_hash, woocommerce_items_in_cart, wp_woocommerce_session_*)</p>
+</td>
+<td>
+<p>nvproducts.cz</p>
+</td>
+<td width="307">
+<p>Funguje nákupní košík a objednávka (nezbytné).</p>
+</td>
+<td width="113">
+<p>do konce návštěvy / 2 dny</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Stripe (__stripe_mid, __stripe_sid)</p>
+</td>
+<td>
+<p>Stripe</p>
+</td>
+<td width="307">
+<p>Zabezpečení platby kartou a prevence podvodů (nezbytné).</p>
+</td>
+<td width="113">
+<p>1 rok / 30 minut</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Complianz (cmplz_*)</p>
+</td>
+<td>
+<p>nvproducts.cz</p>
+</td>
+<td width="307">
+<p>Zapamatování vašeho nastavení souhlasu s cookies.</p>
+</td>
+<td width="113">
+<p>1 rok</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Google Analytics (_ga, _ga_*)</p>
 </td>
 <td>
 <p>Google</p>
 </td>
 <td width="307">
-<p>[analýza při vyhledávání naší webové stránky]</p>
+<p>Anonymní statistika návštěvnosti webu, pouze s vaším souhlasem.</p>
 </td>
 <td width="113">
-<p>Permanentní</p>
+<p>2 roky</p>
 </td>
-</tr>
-<tr>
-<td> </td>
-<td> </td>
-<td width="307"> </td>
-<td width="113"> </td>
-</tr>
-<tr>
-<td> </td>
-<td> </td>
-<td width="307"> </td>
-<td width="113"> </td>
-</tr>
-<tr>
-<td> </td>
-<td> </td>
-<td width="307"> </td>
-<td width="113"> </td>
-</tr>
-<tr>
-<td> </td>
-<td> </td>
-<td width="307"> </td>
-<td width="113"> </td>
-</tr>
-<tr>
-<td> </td>
-<td> </td>
-<td width="307"> </td>
-<td width="113"> </td>
 </tr>
 </tbody>
 </table>
