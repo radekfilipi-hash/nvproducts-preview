@@ -149,19 +149,6 @@ body.cart-open .drawer{transform:none}
 
 /* Kategorie */
 .cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.cat-tile{position:relative;display:flex;min-height:300px;border-radius:var(--r-lg);background:#fff;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line);transition:transform .2s,box-shadow .2s}
-.cat-tile:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
-.cat-tile__txt{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;padding:26px;gap:4px;width:100%}
-.cat-tile__count{font-size:.78rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
-.cat-tile strong{font-size:1.6rem;letter-spacing:-.02em;line-height:1.1}
-.cat-tile small{color:var(--muted);font-size:.9rem}
-.cat-tile img,.cat-tile__viz{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.25);transition:transform .5s}
-.cat-tile__viz{transform:none;padding:8% 24% 30%}
-.cat-tile:hover img{transform:scale(1.35)}
-.cat-tile::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,transparent 35%,rgba(11,16,32,.88))}
-.cat-tile__txt{color:#fff}
-.cat-tile__count{color:var(--gold)!important}
-.cat-tile small{color:rgba(255,255,255,.75)!important}
 
 /* Produkty – mřížka a karta */
 .grid.products{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
@@ -513,7 +500,6 @@ ul.woocommerce-order-overview li strong{display:block;font-size:1.05rem;text-tra
 	.card__foot{flex-direction:column;align-items:flex-start}
 	.card__foot .btn{width:100%}
 	.cat-grid{grid-template-columns:1fr}
-	.cat-tile{min-height:220px}
 	.thick-grid{grid-template-columns:repeat(3,1fr);gap:8px}
 	.usps__grid{grid-template-columns:1fr}
 	.partner-grid,.logo-wall{grid-template-columns:repeat(2,1fr)}
@@ -537,8 +523,8 @@ ul.woocommerce-order-overview li strong{display:block;font-size:1.05rem;text-tra
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 
 /* ---------- Doladění: fotografie a ilustrace multiholderů ---------- */
-.card__media .card__img{object-fit:cover;padding:0;transform:scale(1.4)}
-.card:hover .card__img{transform:scale(1.5)}
+.card__media .card__img{object-fit:cover;padding:0;transform:none}
+.card:hover .card__img{transform:scale(1.04)}
 .card__viz{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;gap:5px;padding:12% 18% 14%;background:radial-gradient(90% 90% at 50% 30%,#26336a,var(--ink))}
 .card__viz::after{content:"";position:absolute;left:14%;right:14%;bottom:9%;height:7px;border-radius:99px;background:rgba(255,255,255,.18)}
 .card__viz .slot{align-self:stretch;flex:calc(var(--h) + 1.6) 1 0;min-width:6px;max-width:34px;min-height:40%;animation:none;padding:0;border-radius:6px;box-shadow:0 8px 14px rgba(0,0,0,.35);transition:transform .3s}
@@ -546,7 +532,7 @@ ul.woocommerce-order-overview li strong{display:block;font-size:1.05rem;text-tra
 .card:hover .card__viz .slot:nth-child(even){transform:translateY(-3px)}
 .gallery__main--wide{aspect-ratio:auto;padding:clamp(16px,3vw,36px)}
 .gallery__main--wide img{height:auto;padding:0;object-fit:contain;border-radius:10px}
-.gallery__main:not(.gallery__main--wide) img{object-fit:cover;padding:0;transform:scale(1.18)}
+.gallery__main:not(.gallery__main--wide) img{object-fit:cover;padding:0;transform:none}
 .thumb img{object-fit:cover}
 .woocommerce-mini-cart-item img,table.shop_table .product-thumbnail img{object-fit:cover;object-position:left center}
 .pdp__grid>*,.contact>*,.about>*,.configband__in>*,.hero__in>*{min-width:0}
@@ -591,3 +577,44 @@ ul#shipping_method label{display:inline;font-weight:600}
 .stack__body{gap:4px}
 .stack .slot{min-width:8px}
 .stack .slot span{font-size:.68rem}
+
+/* Hero na mobilu/tabletu: popisek + nadpis → holdery → úvodní text → tlačítka → čísla */
+@media (max-width:960px){
+	.hero__in{display:flex;flex-direction:column;gap:0;padding-block:clamp(28px,6vw,48px)}
+	.hero__copy{display:contents}
+	.hero__copy .eyebrow{order:1}
+	.hero__copy h1{order:2;margin-bottom:.2em}
+	.hero__stage{order:3;margin:6px auto 4px;max-width:min(440px,100%)}
+	.hero__copy .lead{order:4;margin-bottom:1.4rem}
+	.hero__copy .hero__cta{order:5;margin-bottom:1.8rem}
+	.hero__copy .hero__facts{order:6}
+}
+/* Miniatury v košíku: širokým pásům multiholderů ukázat začátek, ostatním střed */
+.woocommerce-mini-cart-item img,table.shop_table .product-thumbnail img{object-fit:cover;object-position:center}
+.woocommerce-mini-cart-item img.thumb--strip,table.shop_table .product-thumbnail img.thumb--strip{object-position:left center}
+
+/* Detail produktu: poměr 4:3 odpovídá fotkám (3:2) – holder je vidět celý a vycentrovaný, bez ořezu */
+.gallery__main:not(.gallery__main--wide){aspect-ratio:4/3}
+.gallery__main:not(.gallery__main--wide) img{object-position:50% 50%}
+@media (max-width:960px){
+	.hero__stage{aspect-ratio:1/.84}
+	.hero__copy .lead{margin-top:.6rem}
+}
+
+/* Dlaždice kategorií – fotka celá nahoře (bez překrytí textem), text pod ní */
+.cat-tile{display:flex;flex-direction:column;border-radius:var(--r-lg);background:#fff;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line);transition:transform .2s,box-shadow .2s}
+.cat-tile:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.cat-tile__media{position:relative;display:block;aspect-ratio:3/2;overflow:hidden;background:radial-gradient(80% 80% at 50% 40%,#fff,var(--paper-2))}
+.cat-tile__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .5s}
+.cat-tile:hover .cat-tile__media img{transform:scale(1.04)}
+.cat-tile__media .card__viz{border-radius:0}
+.cat-tile__txt{display:flex;flex-direction:column;gap:4px;padding:20px 24px 24px}
+.cat-tile__count{font-size:.78rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+.cat-tile strong{font-size:1.5rem;letter-spacing:-.02em;line-height:1.1;color:var(--ink)}
+.cat-tile small{color:var(--muted);font-size:.92rem}
+
+/* Právní stránky: široké tabulky se posouvají uvnitř, dlouhé odkazy se zalamují */
+.prose{overflow-wrap:anywhere}
+.prose table{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.prose td,.prose th{min-width:90px}
+.prose img{max-width:100%;height:auto}
