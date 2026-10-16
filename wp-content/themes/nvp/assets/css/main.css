@@ -669,3 +669,8 @@ body.nav-open .burger .i-close{display:block}
 .lightbox--single .lightbox__prev,.lightbox--single .lightbox__next,.lightbox--single .lightbox__count{display:none}
 body.lb-open{overflow:hidden}
 @media (max-width:640px){.lightbox__btn{width:44px;height:44px}.lightbox__prev{left:8px}.lightbox__next{right:8px}.lightbox__close{top:10px;right:10px}}
+
+/* Kontaktní formulář: popisek s hvězdičkou nesmí vytvářet další řádek mřížky – pole jsou stejně velká */
+.form label{display:block}
+.form label input,.form label textarea{display:block;margin-top:6px}
+.form__row{align-items:end}
