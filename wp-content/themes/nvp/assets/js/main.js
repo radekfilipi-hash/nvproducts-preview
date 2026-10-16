@@ -157,3 +157,52 @@
 		sync();
 	});
 })();
+
+/* ---------- Lightbox: zvětšení fotky produktu ---------- */
+(function () {
+	var gallery = document.querySelector('[data-gallery]');
+	if (!gallery) return;
+	var zoom = gallery.querySelector('[data-zoom]');
+	if (!zoom) return;
+	var thumbs = Array.prototype.slice.call(gallery.querySelectorAll('.thumb[data-full]'));
+	var list = thumbs.length ? thumbs.map(function (t) { return t.dataset.full; }) : [zoom.dataset.full];
+	var idx = 0, box = null, img, count;
+
+	function build() {
+		box = document.createElement('div');
+		box.className = 'lightbox' + (list.length < 2 ? ' lightbox--single' : '');
+		box.setAttribute('role', 'dialog'); box.setAttribute('aria-modal', 'true'); box.setAttribute('aria-label', 'Zvětšená fotografie');
+		box.innerHTML = '<img class="lightbox__img" alt="">' +
+			'<button type="button" class="lightbox__btn lightbox__close" aria-label="Zavřít"><svg class="nvp-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>' +
+			'<button type="button" class="lightbox__btn lightbox__prev" aria-label="Předchozí"><svg class="nvp-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m15 5-7 7 7 7"/></svg></button>' +
+			'<button type="button" class="lightbox__btn lightbox__next" aria-label="Další"><svg class="nvp-ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></button>' +
+			'<span class="lightbox__count"></span>';
+		document.body.appendChild(box);
+		img = box.querySelector('.lightbox__img'); count = box.querySelector('.lightbox__count');
+		box.addEventListener('click', function (e) {
+			if (e.target.closest('.lightbox__close') || e.target === box) close();
+			else if (e.target.closest('.lightbox__prev')) go(-1);
+			else if (e.target.closest('.lightbox__next')) go(1);
+		});
+	}
+	function show(i) { idx = (i + list.length) % list.length; img.src = list[idx]; count.textContent = (idx + 1) + ' / ' + list.length; }
+	function go(d) { show(idx + d); }
+	function open(i) { if (!box) build(); show(i); box.classList.add('is-open'); document.body.classList.add('lb-open'); box.querySelector('.lightbox__close').focus(); }
+	function close() { if (box) box.classList.remove('is-open'); document.body.classList.remove('lb-open'); zoom.focus(); }
+
+	zoom.addEventListener('click', function () {
+		var active = thumbs.findIndex(function (t) { return t.classList.contains('is-active'); });
+		open(active > -1 ? active : 0);
+	});
+	document.addEventListener('keydown', function (e) {
+		if (!box || !box.classList.contains('is-open')) return;
+		if (e.key === 'Escape') close(); else if (e.key === 'ArrowLeft') go(-1); else if (e.key === 'ArrowRight') go(1);
+	});
+	// šipky + tažení prstem
+	var sx = null;
+	document.addEventListener('touchstart', function (e) { if (box && box.classList.contains('is-open')) sx = e.touches[0].clientX; }, { passive: true });
+	document.addEventListener('touchend', function (e) { if (sx === null) return; var dx = e.changedTouches[0].clientX - sx; sx = null; if (Math.abs(dx) > 50 && list.length > 1) go(dx < 0 ? 1 : -1); }, { passive: true });
+
+	// při přepnutí náhledu nastavit i „hlavní“ fotku pro rozklik
+	thumbs.forEach(function (t) { t.addEventListener('click', function () { zoom.dataset.full = t.dataset.full; }); });
+})();

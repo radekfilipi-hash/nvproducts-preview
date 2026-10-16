@@ -646,3 +646,26 @@ body.nav-open .burger .i-close{display:block}
 	.nav{inset:0;height:100vh;height:100dvh;min-height:100%;padding-top:148px;overflow-y:auto;overscroll-behavior:contain}
 	body.nav-open .site-header::before{background:var(--paper);backdrop-filter:none;-webkit-backdrop-filter:none}
 }
+
+/* Detail: multiholder – fotka s vlastním plátnem a stejnými okraji, zobrazí se celá */
+.gallery__main--strip{aspect-ratio:auto;padding:0;background:#e8e8ec;overflow:hidden}
+.gallery__main--strip .gallery__zoom img{object-fit:contain;padding:0;transform:none;width:100%;height:100%}
+.gallery__zoom{position:relative;display:block;width:100%;height:100%;padding:0;border:0;background:none;cursor:zoom-in}
+.gallery__zoom img{display:block}
+.gallery__zoom-ico{position:absolute;right:14px;bottom:14px;display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:rgba(11,16,32,.72);color:#fff;transition:background .15s,transform .15s}
+.gallery__zoom:hover .gallery__zoom-ico{background:var(--blue);transform:scale(1.06)}
+.gallery__zoom-ico .nvp-ico{width:20px;height:20px}
+
+/* Lightbox – zvětšení fotky */
+.lightbox{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;background:rgba(8,11,22,.92);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.lightbox.is-open{display:flex;animation:fade .2s}
+.lightbox__img{max-width:min(94vw,1600px);max-height:88vh;width:auto;height:auto;border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,.6);background:#e8e8ec;object-fit:contain}
+.lightbox__btn{position:absolute;display:grid;place-items:center;width:52px;height:52px;border:0;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;transition:background .15s}
+.lightbox__btn:hover{background:rgba(255,255,255,.28)}
+.lightbox__close{top:18px;right:18px}
+.lightbox__prev{left:18px;top:50%;transform:translateY(-50%)}
+.lightbox__next{right:18px;top:50%;transform:translateY(-50%)}
+.lightbox__count{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);padding:.3em .9em;border-radius:99px;background:rgba(255,255,255,.14);color:#fff;font-weight:700;font-size:.85rem}
+.lightbox--single .lightbox__prev,.lightbox--single .lightbox__next,.lightbox--single .lightbox__count{display:none}
+body.lb-open{overflow:hidden}
+@media (max-width:640px){.lightbox__btn{width:44px;height:44px}.lightbox__prev{left:8px}.lightbox__next{right:8px}.lightbox__close{top:10px;right:10px}}
