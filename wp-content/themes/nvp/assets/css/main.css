@@ -618,3 +618,8 @@ ul#shipping_method label{display:inline;font-weight:600}
 .prose table{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
 .prose td,.prose th{min-width:90px}
 .prose img{max-width:100%;height:auto}
+
+/* Hlavička: logo vlevo, košík + menu úplně vpravo (telefon i tablet) */
+@media (max-width:960px){
+	.site-header__in>.actions{margin-left:auto}
+}
