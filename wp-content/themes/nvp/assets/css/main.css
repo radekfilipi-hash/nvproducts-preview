@@ -623,3 +623,15 @@ ul#shipping_method label{display:inline;font-weight:600}
 @media (max-width:960px){
 	.site-header__in>.actions{margin-left:auto}
 }
+
+/* Hero: holdery vedle sebe, každý celý vidět (bez zakrývání), spodní hrany na jedné lince */
+.holder--c{width:40%;left:30%;top:9%}
+.holder--l{width:29%;left:1%;top:25%;transform:rotate(-7deg)}
+.holder--r{width:29%;right:1%;top:26%;transform:rotate(7deg)}
+.hero__stage:hover .holder--l{transform:rotate(-9deg) translateX(-4px)}
+.hero__stage:hover .holder--r{transform:rotate(9deg) translateX(4px)}
+@media (max-width:960px){
+	.hero__in{align-items:stretch}
+	.hero__copy .eyebrow{align-self:flex-start}
+	.hero__copy .hero__cta{justify-content:flex-start}
+}
